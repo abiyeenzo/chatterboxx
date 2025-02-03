@@ -12,9 +12,10 @@ app.use(express.static('public'));
 io.on('connection', (socket) => {
   console.log('Un utilisateur s’est connecté');
 
-  socket.on('message', (msg) => {
-    // Diffuse le message à tous les clients connectés
-    io.emit('message', msg);
+  socket.on('message', (data) => {
+    // data contient { username, text }
+    console.log(`${data.username} : ${data.text}`);
+    io.emit('message', data);
   });
 
   socket.on('disconnect', () => {
