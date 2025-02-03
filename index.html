@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App Responsive</title>
+  <style>
+    /* Style global et responsive avec des pourcentages */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .chat-container {
+      width: 90%;              /* largeur flexible en pourcentage */
+      max-width: 800px;        /* limite sur grands écrans */
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      height: 80vh;            /* hauteur relative à la fenêtre */
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .messages {
+      flex: 1;
+      padding: 2%;
+      overflow-y: auto;
+    }
+    .input-container {
+      display: flex;
+      padding: 2%;
+      background: #eee;
+    }
+    .input-container input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    .input-container button {
+      margin-left: 1%;
+      padding: 10px 15px;
+      font-size: 1em;
+      border: none;
+      background: #007BFF;
+      color: #fff;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    /* Ajustements pour les petits écrans */
+    @media (max-width: 600px) {
+      .input-container input[type="text"],
+      .input-container button {
+        font-size: 0.9em;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="messages" id="messages">
+      <!-- Les messages s'afficheront ici -->
+    </div>
+    <div class="input-container">
+      <input type="text" id="messageInput" placeholder="Tapez votre message...">
+      <button onclick="sendMessage()">Envoyer</button>
+    </div>
+  </div>
+
+  <script>
+    // Fonction simple pour simuler l'envoi d'un message
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const messagesDiv = document.getElementById('messages');
+      if(input.value.trim() !== "") {
+        const msgElement = document.createElement("p");
+        msgElement.textContent = input.value;
+        messagesDiv.appendChild(msgElement);
+        input.value = "";
+        // Faire défiler vers le bas pour afficher le dernier message
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>
