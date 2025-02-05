@@ -1,4 +1,4 @@
-/* --- Style Général --- */
+/* --- Style général --- */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #121212;
@@ -12,9 +12,9 @@ body {
 
 /* --- Conteneur du chat --- */
 #chat-container {
-    width: 95%;
+    width: 90%;
     max-width: 450px;
-    height: 85vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     background: #1e1e1e;
@@ -30,15 +30,13 @@ body {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: #888 transparent;
+    gap: 8px;
 }
 
-/* --- Bulles de messages --- */
+/* --- Style des bulles de messages --- */
 .message {
     max-width: 75%;
-    padding: 12px 16px;
+    padding: 10px 14px;
     border-radius: 20px;
     font-size: 14px;
     word-wrap: break-word;
@@ -47,7 +45,7 @@ body {
     animation: fadeIn 0.3s ease-in-out;
 }
 
-/* --- Messages de l'utilisateur (Droite, Bleu) --- */
+/* --- Messages envoyés (droite, bleu) --- */
 .message.sent {
     align-self: flex-end;
     background-color: #007aff;
@@ -55,33 +53,27 @@ body {
     border-bottom-right-radius: 5px;
 }
 
-/* --- Messages des autres (Gauche, Gris) --- */
+/* --- Messages reçus (gauche, gris) --- */
 .message.received {
     align-self: flex-start;
     background-color: #303030;
     border-bottom-left-radius: 5px;
 }
 
-/* --- Nom de l'utilisateur dans chaque message --- */
-.message strong {
-    font-size: 12px;
-    display: block;
-    margin-bottom: 2px;
-    opacity: 0.8;
-}
-
-/* --- Barre de saisie du message --- */
+/* --- Zone de saisie du message --- */
 .input-container {
     display: flex;
-    padding: 10px;
+    padding: 8px;
     background: #1a1a1a;
     border-top: 1px solid #333;
+    align-items: center;
+    gap: 8px;
 }
 
 #messageInput {
     flex: 1;
     padding: 12px;
-    border: 1px solid #444;
+    border: none;
     border-radius: 20px;
     background: #222;
     color: white;
@@ -89,23 +81,28 @@ body {
     font-size: 14px;
 }
 
+/* --- Bouton d'envoi amélioré --- */
 #sendButton {
     background: #007aff;
     color: white;
     border: none;
-    padding: 12px 16px;
-    margin-left: 10px;
+    padding: 10px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #sendButton:hover {
     background: #005ecb;
 }
 
-/* --- Animation d'apparition des messages --- */
+/* --- Animation des messages --- */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -117,7 +114,7 @@ body {
     }
 }
 
-/* --- Responsive pour mobile --- */
+/* --- Adaptation pour mobile --- */
 @media screen and (max-width: 600px) {
     #chat-container {
         width: 100%;
