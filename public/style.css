@@ -1,35 +1,111 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #282c34;
+    background-color: #1e1e1e;
     color: white;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 #chat-container {
     width: 90%;
     max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #333;
-    border-radius: 10px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    background: #2c2f36;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 
 #messages {
-    height: 300px;
+    flex: 1;
     overflow-y: auto;
-    border: 1px solid #666;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.message {
+    max-width: 75%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: 14px;
+    word-wrap: break-word;
+    line-height: 1.4;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.message strong {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 2px;
+    opacity: 0.8;
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: #61dafb;
+    color: black;
+    text-align: right;
+    border-bottom-right-radius: 5px;
+}
+
+.message.received {
+    align-self: flex-start;
+    background-color: #444;
+    text-align: left;
+    border-bottom-left-radius: 5px;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background: #1e1e1e;
+    border-top: 1px solid #444;
 }
 
 #messageInput {
-    width: 70%;
-    padding: 10px;
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #666;
+    border-radius: 20px;
+    background: #333;
+    color: white;
+    outline: none;
+    font-size: 14px;
 }
 
 #sendButton {
-    width: 25%;
-    padding: 10px;
     background: #61dafb;
+    color: black;
     border: none;
+    padding: 12px 16px;
+    margin-left: 10px;
+    border-radius: 50%;
     cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+#sendButton:hover {
+    background: #4bbde7;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
