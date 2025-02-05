@@ -1,27 +1,27 @@
 const express = require('express');
 const http = require('http');
-const socketIo = require('socket.io');
+const { Server } = require('socket.io');
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = new Server(server);
 
-// Sert les fichiers statiques du dossier public
-app.use(express.static('public'));
+// Servir les fichiers statiques du dossier public
+app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', (socket) => {
-  console.log('Un utilisateur s’est connecté');
+    console.log('Nouvel utilisateur connecté');
 
-  socket.on('message', (data) => {
-    // data contient { username, text }
-    console.log(`${data.username} : ${data.text}`);
-    io.emit('message', data);
-  });
+    socket.on('message', (data) => {
+        console.log(`${data.username}: ${data.text}`);
+        io.emit('message', data);
+    });
 
-  socket.on('disconnect', () => {
-    console.log('Un utilisateur s’est déconnecté');
-  });
+    socket.on('disconnect', () => {
+        console.log('Un utilisateur s’est déconnecté');
+    });
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => console.log(`Serveur démarré sur le port ${PORT}`));
+server.listen(PORT, () => console.log(`Serveur en ligne sur le port ${PORT}`));
