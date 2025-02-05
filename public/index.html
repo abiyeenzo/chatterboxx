@@ -1,28 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChatterBoxx</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Socket.io sera chargé automatiquement côté serveur -->
-  <script src="/socket.io/socket.io.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatterbox</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="chat-container">
-    <header class="chat-header">
-      <h1>ChatterBoxx</h1>
-    </header>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <input type="text" id="messageInput" placeholder="Tapez un message...">
+        <button id="sendButton">Envoyer</button>
+    </div>
 
-    <section class="chat-messages" id="messages">
-      <!-- Les messages s'afficheront ici -->
-    </section>
-
-    <footer class="chat-footer">
-      <input type="text" id="messageInput" placeholder="Votre message..." autocomplete="off">
-      <button id="sendButton">Envoyer</button>
-    </footer>
-  </div>
-  <script src="app.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
